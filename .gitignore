@@ -1,1 +1,16 @@
+*.acn
+*.aux
+*.blg
+*.fdb_latexmk
+*.fls
+*.glsdefs
+*.log
+*.pdf
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+*.xdy
 
+Book-blx.bib
+.DS_Store

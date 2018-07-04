@@ -1,0 +1,284 @@
+% !TeX document-id = {31fdbd90-dc34-40db-87f2-c993b006d6d9}
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = XeLaTeX
+% !Mode:: "TeX:UTF-8"
+% 
+\documentclass[twoside,CJK,openany,UTF8,fancyhdr]{ctexbook}%,draft
+
+
+% 
+% \setCJKmainfont[AutoFakeBold=true]{Adobe Song Std}
+% \setCJKsansfont{Adobe Heiti Std}
+% \setCJKmonofont{Adobe Fangsong Std}
+% \CTEXsetup[format={\raggedright}]{chapter}
+% \CTEXsetup[format={\Large\bfseries}]{section}
+% \CTEXsetup[format={\large\bfseries}]{subsection}
+% \CTEXsetup[format={\normalsize\bfseries}]{subsubsection}
+
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb,amsmath,amscd,bm}
+\usepackage{graphicx}
+
+%======================================packages======================================
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage{type1cm}         
+\usepackage{makeidx}
+\usepackage{listings} 
+
+\usepackage[nomain,acronym,xindy,toc,nopostdot]{glossaries}
+\makeglossaries
+
+% equation -Jonah
+%\usepackage{mathtools}
+\usepackage{xfrac}
+
+% chunqi
+\usepackage{CJKutf8}
+%\usepackage{pinyin}
+% chunqi
+
+\usepackage{helvet}          % selects Helvetica as sans-serif font
+\usepackage{courier}         % selects Courier as typewriter font
+
+\usepackage[bottom]{footmisc}% places footnotes at page bottom
+
+\usepackage{sidecap}
+%\usepackage{url}
+%\usepackage{hyperref}
+%\hypersetup{unicode, colorlinks, linkcolor=blue}
+%\usepackage{bookmark}
+
+\usepackage[pdfpagelabels=true,
+pdffitwindow=false,
+pdfview=FitH,
+pdfstartview=FitH,
+breaklinks=true,
+colorlinks=false,
+bookmarks=true,
+hidelinks=true,
+bookmarksnumbered=true,
+bookmarksopen=true,
+bookmarksopenlevel=1,
+bookmarksdepth=1,
+plainpages=true]{hyperref}
+\usepackage{bookmark}
+
+\usepackage{longtable, lscape}
+
+\usepackage[most]{tcolorbox}
+%\usepackage[caption=false]{subfig}
+\usepackage[list=true]{subcaption}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage[toc,page]{appendix}
+
+\usepackage[backend=bibtex,
+    bibencoding=utf8,
+    refsegment=chapter,
+    style=authoryear,
+    sorting=nyt]{biblatex}
+\addbibresource{template.bib} 
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[shortlabels]{enumitem}
+
+
+
+
+%=============版面设置================================================================================
+%\topmargin=1.3truecm \oddsidemargin=1cm \evensidemargin=0cm
+%\textwidth=15cm \textheight=21.5cm
+%\def\baselinestretch{1.5}
+%\arraycolsep=2pt
+
+\setlength{\oddsidemargin}{6mm}%-20mm}
+\setlength{\evensidemargin}{6mm}%-20mm}
+\setlength{\topmargin}{12mm}%{70mm}正常是12mm
+%\setlength{\footskip}{-5mm}
+
+\textwidth 145mm
+\textheight 195mm %190mm
+\parindent=2\ccwd
+
+\DeclareSymbolFont{lettersA}{U}{txmia}{m}{it}%派正体(4行可能是)可以用，但上面更简单些
+\DeclareMathSymbol{\piup}{\mathord}{lettersA}{25}
+\DeclareMathSymbol{\muup}{\mathord}{lettersA}{22}
+\DeclareMathSymbol{\deltaup}{\mathord}{lettersA}{14}
+
+\usepackage[labelsep=space]{caption}
+\DeclareCaptionFont{c5size}{\zihao{-5}}
+\DeclareCaptionLabelSeparator{sprasep}{\ \ }
+\captionsetup[figure]{labelfont={c5size,bf},textfont={c5size},labelsep=sprasep}
+\captionsetup[table]{labelsep=space,labelfont={c5size,bf},textfont={c5size}}
+
+%-----------------------微积分改正体------------------------------------
+\let\oldintop\intop
+\def\oldint{\oldintop\nolimits}
+\let\oldsmallint\smallint             %\smallint表示行中正体小微积分
+\DeclareSymbolFont{EUEX}{U}{euex}{m}{n}
+\DeclareSymbolFont{euexlargesymbols}{U}{euex}{m}{n}
+\DeclareMathSymbol{\intop}{\mathop}{euexlargesymbols}{90}
+\def\int{\intop\nolimits}
+\DeclareSymbolFont{euexsymbols}     {U}{euex}{m}{n}
+\DeclareMathSymbol{\smallint}{\mathop}{euexsymbols}{"52}
+%-----------------------------------------------------------
+
+\usepackage{fancyhdr}%书眉宏
+\pagestyle{fancy} \fancyhf{}%书眉线
+
+
+\newtheorem{theorem}{\indent 定理}[section]
+
+%--------------------------------------------
+%\theoremstyle{definition}
+%\newtheorem{theorem}{{}\hskip\parindent 定理}[section]
+%\newtheorem{corollary}[theorem]{{}\hskip\parindent 推论}
+%\newtheorem{conjecture}[theorem]{{}\hskip\parindent 猜想}
+%\newtheorem{notation}[theorem]{{}\hskip\parindent 注记}
+%\newtheorem{lemma}[theorem]{{}\hskip\parindent 引理}
+%\newtheorem{proposition}[theorem]{{}\hskip\parindent 命题}
+%\newtheorem{Claim}[theorem]{{}\hskip\parindent 论断}
+%\newtheorem{problem}[theorem]{{}\hskip\parindent 问题}
+%\newtheorem{example}[theorem]{{}\hskip\parindent 例}
+%\theoremstyle{remark}
+
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{{}\hskip\parindent 定义}
+%\theoremstyle{remark}
+
+%\renewcommand{\qed}{\hfill\rule{1ex}{1.6ex}\vskip5pt}
+
+\CTEXsetup[name={第~,~章},number={\arabic{chapter}},nameformat+={\LARGE},titleformat+={\LARGE}]{chapter}
+
+%%%%%%%%%%%%%%%%
+% 格式参考
+% https://www.zhihu.com/question/27431114
+%%%%%%%%%%%%%%%%
+
+
+
+
+
+\begin{document}
+
+
+
+\renewcommand{\contentsname}{目录}     % 将Contents改为目录
+\renewcommand{\abstractname}{摘要}     % 将Abstract改为摘要
+\renewcommand{\refname}{参考文献}      % 将References改为参考文献
+\renewcommand{\indexname}{索引}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\appendixname}{附录}
+\renewcommand{\proofname}{证明}
+%\renewcommand{\algorithm}{算法}
+
+
+
+
+
+\author{Cuckoo}
+\title{深度学习在多元时间序列上的应用}
+
+\maketitle
+%\frontmatter
+
+% From en book -B
+\setlength{\parskip}{0.25 \baselineskip}
+% Sean said to make figures 26 picas wide
+\newlength{\figwidth}
+\setlength{\figwidth}{26pc}
+% Spacing between notation sections
+\newlength{\notationgap}
+\setlength{\notationgap}{1pc}
+% From en book -E
+
+\graphicspath{
+{chapter00/}
+{chapter01/}
+{chapter02/}
+{chapter03/}
+{chapter04/}
+{chapter05/}
+{chapter06/}
+{chapter07/}
+{chapter08/}
+{chapter09/}
+}
+
+
+
+
+
+\input{chapter00/intro.tex}
+
+
+
+\include{math_symbol}
+\include{terminology}
+
+\input{notation.tex}
+%\input{notation_code.tex}
+
+
+\tableofcontents
+\newpage
+\part{PartI}
+\newpage
+
+\input{chapter01/chapter01.tex}
+% \section*{参考文献}\printbibliography[segment=\therefsegment,heading=none]
+
+\input{chapter02/chapter02.tex}
+\section*{参考文献}\printbibliography[segment=\therefsegment,heading=none]
+
+\input{chapter03/gan.tex}
+\newpage
+\section*{参考文献}\printbibliography[segment=\therefsegment,heading=none]
+
+\newpage
+\part{PartII}
+
+\input{chapter04/chapter04.tex}
+\section*{参考文献}\printbibliography[segment=\therefsegment,heading=none]
+
+\input{chapter05/chapter05.tex}
+\section*{参考文献}\printbibliography[segment=\therefsegment,heading=none]
+
+\input{chapter06/chapter06.tex}
+\section*{参考文献}\printbibliography[segment=\therefsegment,heading=none]
+
+\input{chapter07/chapter07.tex}
+\section*{参考文献}\printbibliography[segment=\therefsegment,heading=none]
+
+\input{chapter08/chapter08.tex}
+\section*{参考文献}\printbibliography[segment=\therefsegment,heading=none]
+
+\newpage
+\part{PartIII}
+
+\input{chapter09/chapter09.tex}
+\section*{参考文献}\printbibliography[segment=\therefsegment,heading=none]
+
+\input{chapter10/chapter10.tex}
+\section*{参考文献}\printbibliography[segment=\therefsegment,heading=none]
+
+
+
+
+\newpage
+
+\lineskiplimit3pt%段落公式上、下行距问题
+
+\fancyhead[EC]{\small\small\thepage\rm\hfill \small 深度学习在多元时间序列上的应用化\hfill}
+\fancyhead[OC]{\rm\hfill\small 参考文献\hfill\thepage}
+
+% \chapter*{参\ 考\ 文\ 献}
+% \printbibliography[heading=none]
+
+\thispagestyle{empty}
+
+\end{document}
